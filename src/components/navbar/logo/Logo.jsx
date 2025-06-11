@@ -3,7 +3,7 @@ import React from 'react'
 const Logo = () => {
   return (
     <div>
-     <img className='w-auto h-8 m-3' src="/logo.webp" alt="" />
+     <img className='w-auto h-8 m-3 mx-12' src="/logo.webp" alt="" />
     </div>
   )
 }

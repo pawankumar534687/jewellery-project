@@ -3,7 +3,7 @@ import React from 'react'
 const BestSeller = () => {
   return (
     <div>
-      BestSeller
+       Best Seller Jewellery Collection
     </div>
   )
 }
