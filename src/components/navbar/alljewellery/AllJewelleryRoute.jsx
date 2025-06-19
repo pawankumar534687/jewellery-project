@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 const AllJewelleryRoute = () => {
   return (
-    <div className="">
+    <div className="pt-16">
       
       <Outlet />
     </div>

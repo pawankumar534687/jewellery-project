@@ -2,7 +2,7 @@ import React from 'react'
 
 const NewArrival = () => {
   return (
-    <div>
+    <div className='mt-16'>
      new arrival
     </div>
   )

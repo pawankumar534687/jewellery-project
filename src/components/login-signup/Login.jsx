@@ -1,56 +1,90 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/login",
+        data
+      );
+      const result = response.data;
+
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("id", result.user.id);
+      localStorage.setItem("email", result.user.email);
+      localStorage.setItem("lastname", result.user.lastname);
+      localStorage.setItem("firstname", result.user.firstname);
+
+      reset();
+
+      navigate("/");
+
+      toast.success("Login successful!");
+    } catch (error) {
+      const msg = error.response?.data?.message || "Login failed!";
+      toast.error(msg);
+      console.error("Login error:", error);
+    }
   };
+
   return (
-    <div  className="flex mt-6  flex-col gap-6  items-center justify-center">
-      <h1 className="items-center   text-2xl font-bold flex justify-center mt-10">
-        Login
-      </h1>
+    <div className="mt-24 px-4">
+      <h1 className="text-2xl font-bold flex justify-center mt-10">Login</h1>
+
       <form
-        className="flex mt-6  flex-col gap-6  items-center justify-center"
-        action=""
+        className="flex mt-6 flex-col gap-6 items-center justify-center"
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
-          className="border-gray-400 p-3 border  sm:w-[70vh] md:w-[80vh] lg:w-[75vh] rounded-lg"
+          className="border-gray-400 p-3 border w-full max-w-md rounded-lg"
           type="text"
           placeholder="Email"
           {...register("email", { required: true })}
         />
         {errors.email && (
-          <p className="text-red-500 text-sm">Email is required</p>
+          <p className="text-red-500 text-sm">{errors.email.message}</p>
         )}
+
         <input
-          className="border-gray-400 p-3 border  sm:w-[70vh] md:w-[80vh] lg:w-[75vh] rounded-lg"
+          className="border-gray-400 p-3 border w-full max-w-md rounded-lg"
           type="password"
           placeholder="Password"
-          {...register("password", { required: true })}
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters",
+            },
+          })}
         />
         {errors.password && (
-          <p className="text-red-500 text-sm">Password is required</p>
+          <p className="text-red-500 text-sm">{errors.password.message}</p>
         )}
+
         <button
           type="submit"
-          className="bg-black mt- text-white text-md px-8 py-2 rounded-lg"
+          className="bg-black text-white text-md px-8 py-2 rounded-lg"
         >
-          Signup
+          Submit
         </button>
       </form>
-      <Link to="/signup" >Create Account</Link>
 
-
-
+      <Link to="/signup" className="mt-4 text-blue-600 hover:underline text-sm">
+        Create Account
+      </Link>
     </div>
   );
 };

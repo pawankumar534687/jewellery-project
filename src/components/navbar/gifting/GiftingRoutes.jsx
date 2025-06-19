@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const GiftingRoutes = () => {
   return (
-    <div>
+    <div className='pt-16'>
       <Outlet/>
     </div>
   )

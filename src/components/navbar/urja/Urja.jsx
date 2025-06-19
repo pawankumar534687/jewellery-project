@@ -2,7 +2,7 @@ import React from 'react'
 
 const Urja = () => {
   return (
-    <div>
+     <div className='pt-16'>
       Urja
     </div>
   )
