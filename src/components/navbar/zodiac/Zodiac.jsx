@@ -22,31 +22,31 @@ const Zodiac = ({setIsOpen}) => {
       {open && (
         <div className="absolute bg-white shadow-lg z-10 mt-2 rounded-xl p-4 w-60 space-y-2">
           <Link
-            to="/zodiac/star-child"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
           Star Child
           </Link>
           <Link
-            to="/zodiac/linked"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Linked
           </Link>
           <Link
-            to="/zodiac/healing"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Healing
           </Link>
           <Link
-            to="/zodiac/initials"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Initials
           </Link>
           <Link
-            to="/zodiac/chakras"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Chakras

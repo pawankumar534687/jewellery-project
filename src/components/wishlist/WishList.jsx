@@ -31,7 +31,7 @@ const WishList = () => {
   };
 
   return (
-    <div className="w-full pt-6 bg-gray-100 min-h-screen px-6">
+    <div className="w-full pt-13 bg-gray-100 min-h-screen px-6">
       <h1 className="text-4xl font-bold mb-8 text-center">WishList Products</h1>
 
       {wishListProducts.length === 0 ? (
@@ -46,7 +46,7 @@ const WishList = () => {
               className="w-full flex flex-col md:flex-row items-center gap-3 md:gap-6 hover:bg-pink-100 bg-white p-4 rounded-xl shadow"
             >
               <img
-                src={item.images}
+                src={item.image}
                 alt={item.productName}
                 className="w-24 h-24 md:w-28 md:h-28 object-cover rounded-md"
               />
@@ -59,7 +59,7 @@ const WishList = () => {
 
               <div className="flex-1 w-full text-center md:text-left">
                 <p className="text-base md:text-lg text-red-600 mt-1">
-                  ₹{item.price}
+                  ₹{item.discountedPrice}
                 </p>
               </div>
 

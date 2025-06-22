@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios"
+import { toast } from "react-toastify";
 const ContactUs = () => {
   const {
     register,
@@ -10,9 +11,15 @@ const ContactUs = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const token = localStorage.getItem("token")
     try {
-       await axios.post("http://localhost:8000/api/message", data)
+       await axios.post("http://localhost:8000/api/message", data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+       })
        reset()
+       toast.success("send to message")
     } catch (error) {
       console.log(error)
       

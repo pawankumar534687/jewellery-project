@@ -5,7 +5,7 @@ const Banner3 = () => {
   return (
     <div>
       <div>
-        <Link>
+        <Link to="/collection/Jewellery" >
           <   motion.img initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -16,7 +16,7 @@ const Banner3 = () => {
             alt=""
           />
         </Link>
-        <Link>
+        <Link to="/collection/Jewellery" >
           <   motion.img initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -29,7 +29,7 @@ const Banner3 = () => {
         </Link>
       </div>
       <div>
-         <Link>
+         <Link to="/collection/Jewellery" >
           <   motion.img initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}

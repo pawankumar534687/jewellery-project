@@ -22,43 +22,43 @@ const Gifting = ({setIsOpen}) => {
       {open && (
         <div className="absolute bg-white shadow-lg z-10 mt-2 rounded-xl p-4 w-60 space-y-2">
           <Link
-            to="/gifting/gift-box"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline"  onClick={() => setIsOpen(false)}
           >
             Gift Box
           </Link>
           <Link
-            to="/gifting/jewellery-setes"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Jewellery Setes
           </Link>
           <Link
-            to="/gifting/gift-for-baby"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Gift For Baby
           </Link>
           <Link
-            to="/gifting/gift-for-him"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Gift For Him
           </Link>
           <Link
-            to="/gifting/gift-for-mom"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Gift For Mom
           </Link>
           <Link
-            to="/gifting/gift-for-teens"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Gift For Teens
           </Link>
           <Link
-            to="/gifting/valentins-gift"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Valentins Gift

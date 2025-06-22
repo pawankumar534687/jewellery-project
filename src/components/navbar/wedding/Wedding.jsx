@@ -22,25 +22,25 @@ const Wedding = ({setIsOpen}) => {
       {open && (
         <div className="absolute bg-white shadow-lg z-10 mt-2 rounded-xl p-4 w-60 space-y-2">
           <Link
-            to="/wedding/bridal-favors"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
          Bridal Favors
           </Link>
           <Link
-            to="/wedding/bridal-jewelery"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Bridal Jewelery
           </Link>
           <Link
-            to="/wedding/zariin-brides"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Zariin Brides
           </Link>
           <Link
-            to="/wedding/mangalsutra"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
            Mangalsutra

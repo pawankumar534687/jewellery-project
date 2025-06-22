@@ -27,7 +27,7 @@ const Navbar = ({ show }) => {
           <Logo />
 
           <div className="flex max-lg:hidden items-center">
-            <Link className="hover:underline text-sm" to="newarrival">
+            <Link className="hover:underline text-sm" to="/collection/Jewellery">
               New Arrival
             </Link>
             <AllJewellery />
@@ -35,7 +35,7 @@ const Navbar = ({ show }) => {
             <Gifting />
             <Zodiac />
             <Wedding />
-            <Link className="hover:underline text-sm" to="urja">
+            <Link className="hover:underline text-sm" to="/collection/Jewellery">
               Urja
             </Link>
           </div>
@@ -95,7 +95,7 @@ const Navbar = ({ show }) => {
             <Link
               onClick={() => setIsOpen(false)}
               className="hover:underline text-sm ml-4 py-2"
-              to="newarrival"
+              to="/collection/Jewellery"
             >
               New Arrival
             </Link>
@@ -107,7 +107,7 @@ const Navbar = ({ show }) => {
             <Link
               onClick={() => setIsOpen(false)}
               className="hover:underline text-sm ml-4 py-2"
-              to="urja"
+              to="/collection/Jewellery"
             >
               Urja
             </Link>

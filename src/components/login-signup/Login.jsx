@@ -24,9 +24,6 @@ const Login = () => {
 
       localStorage.setItem("token", result.token);
       localStorage.setItem("id", result.user.id);
-      localStorage.setItem("email", result.user.email);
-      localStorage.setItem("lastname", result.user.lastname);
-      localStorage.setItem("firstname", result.user.firstname);
 
       reset();
 
@@ -43,7 +40,6 @@ const Login = () => {
   return (
     <div className="mt-24 px-4">
       <h1 className="text-2xl font-bold flex justify-center mt-10">Login</h1>
-
       <form
         className="flex mt-6 flex-col gap-6 items-center justify-center"
         onSubmit={handleSubmit(onSubmit)}
@@ -74,9 +70,19 @@ const Login = () => {
           <p className="text-red-500 text-sm">{errors.password.message}</p>
         )}
 
+        {/* Wrapper div for link */}
+        <div className="w-full max-w-md flex justify-start">
+          <Link
+            to="/forgot-password"
+            className="text-blue-600 hover:underline text-sm"
+          >
+            Forgot Password
+          </Link>
+        </div>
+
         <button
           type="submit"
-          className="bg-black text-white text-md px-8 py-2 rounded-lg"
+          className="bg-black text-white text-md px-8 cursor-pointer py-2 rounded-lg "
         >
           Submit
         </button>

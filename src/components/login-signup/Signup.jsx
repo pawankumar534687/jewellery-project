@@ -23,9 +23,7 @@ const Signup = () => {
 
       localStorage.setItem("token", result.token);
       localStorage.setItem("id", result.user.id);
-      localStorage.setItem("email", result.user.email);
-      localStorage.setItem("firstname", result.user.firstname);
-      localStorage.setItem("lastname", result.user.lastname);
+     
 
       reset();
       toast.success("Signup successful!");

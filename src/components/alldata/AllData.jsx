@@ -28,7 +28,18 @@ const AllData = () => {
         (wishlistItem) => wishlistItem._id !== item._id
       );
     } else {
-      updatedWishlist = [...wishlistData, item];
+      // Sirf selected fields store karna:
+      const discountedPrice = item.price - item.price / 10;
+
+      const wishlistItem = {
+        _id: item._id,
+        productName: item.productName,
+        image: item.images[0],
+        price: item.price,
+        discountedPrice: discountedPrice.toFixed(0),
+      };
+
+      updatedWishlist = [...wishlistData, wishlistItem];
     }
 
     setWishlistData(updatedWishlist);
@@ -99,17 +110,26 @@ const AllData = () => {
                     {isWishlisted(item._id) ? "❤️" : "🤍"}
                   </button>
 
-                  <img className="rounded-xl" src={item.images[2]} alt="" />
+                  <div className="w-full h-48 overflow-hidden flex justify-center items-center bg-gray-100 rounded-xl">
+                    <img
+                      className="object-cover w-full h-full"
+                      src={item.images[0]}
+                      alt=""
+                    />
+                  </div>
+
                   <p className="text-md font-semibold mt-2">
                     {item.productName}
                   </p>
 
-                  <div className="flex gap-16 ">
-                    <p className="text-sm font-semibold mt-1 ">
-                      <span className="line-through  text-gray-400">
+                  <div className="flex gap-16 pb-2">
+                    <p className="text-sm font-semibold mt-1 flex flex-col ">
+                      <span className="line-through text-gray-400">
                         ₹{item.price}
                       </span>
-                      
+                      <span className="text-md font-bold text-green-600 uppercase tracking-wide">
+                        10% OFF
+                      </span>
                     </p>
 
                     <p className="text-md font-semibold mt-1">

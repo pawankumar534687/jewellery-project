@@ -1,11 +1,29 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [showInput, setShowInput] = useState(false);
+  const [query, setquery] = useState("");
+  const Navigate = useNavigate();
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/api/search?q=${query}`
+      );
+
+      // Navigate after data is fetched
+      Navigate("/searchs", {
+        state: { results: response.data, query: query },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="relative">
-      {/* Search Icon */}
       <img
         className="w-auto h-6 cursor-pointer"
         src="/search.png"
@@ -18,12 +36,27 @@ const Search = () => {
           <div className="w-full max-w-md flex items-center gap-2">
             <input
               type="text"
+              value={query}
               placeholder="Search here..."
               className="flex-1 p-2 border border-gray-300 rounded"
+              onChange={(e) => setquery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
             />
+
+            <button onClick={handleSearch}>
+              <img
+                className="w-6 h-6 cursor-pointer"
+                src="/search.png"
+                alt=""
+              />
+            </button>
             <button
               onClick={() => setShowInput(false)}
-              className="text-gray-500 hover:text-black"
+              className="text-gray-500 hover:text-black "
             >
               ✖
             </button>

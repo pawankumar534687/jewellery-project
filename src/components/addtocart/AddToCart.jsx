@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddToCart = ({ item }) => {
-  const handleAdd = (item) => {
+  const handleAdd = () => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     const originalPrice = item.price;
     const subtract = originalPrice / 10;
@@ -11,25 +11,25 @@ const AddToCart = ({ item }) => {
       _id: item._id,
       price: item.price,
       discountprice: discountedPrice.toFixed(0),
-      image: item.images[0],
+      image: item.images?.[0],
       productName: item.productName,
+      quantity: 1, // Initial quantity
     };
 
-   const existProduct = existingCart.find((p) => p._id === item._id);
+    const existProduct = existingCart.find((p) => p._id === item._id);
 
-if (existProduct) {
- 
-  const updatedCart = existingCart.filter((p) => p._id !== item._id);
-
- 
-  updatedCart.push({ ...productToAdd, quantity: 1 });
-
-  localStorage.setItem("cart", JSON.stringify(updatedCart));
-} else {
-  const updatedCart = [...existingCart, { ...productToAdd, quantity: 1 }];
-  localStorage.setItem("cart", JSON.stringify(updatedCart));
-}
-
+    if (existProduct) {
+      // Agar already product hai → sirf quantity +1 karni chahiye (optional)
+      const updatedCart = existingCart.map((p) =>
+        p._id === item._id
+          ? { ...p, quantity: p.quantity + 1 }
+          : p
+      );
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    } else {
+      const updatedCart = [...existingCart, productToAdd];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
 
   return (
@@ -37,7 +37,7 @@ if (existProduct) {
       <button
         type="button"
         onClick={(e) => {
-          handleAdd(item);
+          handleAdd();
           e.preventDefault();
           e.stopPropagation();
         }}

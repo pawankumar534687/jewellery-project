@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 const Profile = () => {
   const [textData, settextData] = useState(true);
+  const [profileData, setProfileData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
   const {
     handleSubmit,
     register,
@@ -14,30 +21,63 @@ const Profile = () => {
 
   const id = localStorage.getItem("id");
 
-  const fetchUser = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/api/editprofile/${id}`
-      );
-      reset(response.data);
-      settextData(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  useEffect(() => {
+  fetchUser();
+}, []);
+
+const fetchUser = async () => {
+  const token = localStorage.getItem("token")
+  try {
+    const response = await axios.get(`http://localhost:8000/api/editprofile/${id}`, {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    });
+    const result = response.data;
+
+    reset({
+      firstname: result.firstname,
+      lastname: result.lastname,
+      email: result.email,
+      phone: result.phone,
+      address: result.address
+    });
+
+    setProfileData({
+      firstname: result.firstname,
+      lastname: result.lastname,
+      email: result.email,
+      phone: result.phone,
+      address: result.address
+    });
+
+    settextData(true);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
   const onSubmit = async (data) => {
+    const token = localStorage.getItem("token")
     try {
       const response = await axios.put(
         `http://localhost:8000/api/saveprofile/${id}`,
-        data
+        data, {
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
       const resulte = response.data;
-      localStorage.setItem("email", resulte.user.email);
-      localStorage.setItem("phone", resulte.user.phone);
-      localStorage.setItem("address", resulte.user.address);
-      localStorage.setItem("firstname", resulte.user.firstname);
-      localStorage.setItem("lastname", resulte.user.lastname);
+
+      setProfileData({
+        email: resulte.user.email,
+        firstname: resulte.user.firstname,
+        lastname: resulte.user.lastname,
+        phone: resulte.user.phone,
+        address: resulte.user.address,
+      });
 
       toast.success("save changes");
       settextData(true);
@@ -45,12 +85,6 @@ const Profile = () => {
       toast.error(error);
     }
   };
-
-  const firstname = localStorage.getItem("firstname");
-  const lastname = localStorage.getItem("lastname");
-  const email = localStorage.getItem("email");
-  const phone = localStorage.getItem("phone");
-  const address = localStorage.getItem("address");
 
   return (
     <>
@@ -63,25 +97,25 @@ const Profile = () => {
           <div className="md:grid pt-16 grid-cols-2">
             <div className="m-6">
               <p className="text-sm">Full Name</p>
-              <p className="text-md font-semibold">{firstname}</p>
+              <p className="text-md font-semibold">{profileData.firstname}</p>
             </div>
             <div className="m-6">
               <p className="text-sm">Last Name</p>
-              <p className="text-md font-semibold">{lastname}</p>
+              <p className="text-md font-semibold">{profileData.lastname}</p>
             </div>
             <div className="m-6">
               <p className="text-sm">Email</p>
-              <p className="text-md font-semibold">{email}</p>
+              <p className="text-md font-semibold">{profileData.email}</p>
             </div>
-            {phone && address && (
+            {profileData.phone && profileData.address && (
               <>
                 <div className="m-6">
                   <p className="text-sm">Phone</p>
-                  <p className="text-md font-semibold">{phone}</p>
+                  <p className="text-md font-semibold">{profileData.phone}</p>
                 </div>
                 <div className="m-6">
                   <p className="text-sm">Address</p>
-                  <p className="text-md font-semibold">{address}</p>
+                  <p className="text-md font-semibold">{profileData.address}</p>
                 </div>
               </>
             )}
@@ -89,7 +123,7 @@ const Profile = () => {
 
           <div className="flex justify-center mt-6 items-center">
             <button
-              onClick={fetchUser}
+              onClick={() => settextData(false)}
               className="bg-black text-white text-md px-8 py-2 rounded-lg"
             >
               Edit Profile
@@ -171,12 +205,12 @@ const Profile = () => {
               <p className="text-red-500 text-sm">{errors.address.message}</p>
             )}
             <div>
-            <button
-              type="submit"
-              className="bg-black text-white text-md py-2  rounded-lg"
-            >
-              Save Changes
-            </button>
+              <button
+                type="submit"
+                className="bg-black text-white text-md p-2  rounded-lg"
+              >
+                Save Changes
+              </button>
             </div>
           </form>
         </div>

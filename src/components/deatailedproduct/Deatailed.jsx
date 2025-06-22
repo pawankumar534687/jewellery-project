@@ -29,7 +29,6 @@ const Deatailed = () => {
 
   return (
     <div className="w-full flex pt-12 max-lg:flex-col border-b border-b-neutral-200 min-h-[calc(100vh-100px)]">
-      
       <div className="w-[50%] border-r max-lg:w-full border-r-neutral-200">
         <div className="flex justify-center p-6 items-center flex-col">
           {selectedImage && (
@@ -97,7 +96,8 @@ const Deatailed = () => {
 
         {/* QUANTITY + ADD TO CART */}
         <div className="border-b flex justify-between items-center border-b-neutral-200 py-4">
-          <Quantity id={detailed._id} />
+          <Quantity id={detailed._id} quantity={detailed.quantity} />
+
           <AddToCart item={detailed} />
         </div>
 

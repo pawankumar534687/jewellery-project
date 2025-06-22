@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const AllJewellery = ({ setIsOpen }) => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className="relative inline-block text-left">
       <button
@@ -22,49 +23,49 @@ const AllJewellery = ({ setIsOpen }) => {
       {open && (
         <div className="absolute bg-white shadow-lg z-10 mt-2 rounded-xl p-4 w-60 space-y-2">
           <Link
-            to="/alljewellery/bestseller"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline"
             onClick={() => setIsOpen(false)}
           >
             BestSeller
           </Link>
           <Link
-            to="/alljewellery/bracelets"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "
             onClick={() => setIsOpen(false)}
           >
             Bracelets
           </Link>
           <Link
-            to="/alljewellery/charms"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "
             onClick={() => setIsOpen(false)}
           >
             Charms
           </Link>
           <Link
-            to="/alljewellery/earings"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "
             onClick={() => setIsOpen(false)}
           >
             Earrings
           </Link>
           <Link
-            to="/alljewellery/hairaccessories"
+            to="/collection/Jewellery"
             onClick={() => setIsOpen(false)}
             className="block text-sm hover:underline "
           >
             Hair Accessories
           </Link>
           <Link
-            to="/alljewellery/nackles"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "
             onClick={() => setIsOpen(false)}
           >
             Necklaces
           </Link>
           <Link
-            to="/alljewellery/rings"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "
             onClick={() => setIsOpen(false)}
           >

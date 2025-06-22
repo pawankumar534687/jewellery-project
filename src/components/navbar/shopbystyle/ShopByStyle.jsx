@@ -22,55 +22,55 @@ const ShopByStyle = ({setIsOpen}) => {
       {open && (
         <div className="absolute bg-white shadow-lg z-10 mt-2 rounded-xl p-4 w-60 space-y-2">
           <Link
-            to="/shopbystyle/curated-looks"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Curated Looks
           </Link>
           <Link
-            to="/shopbystyle/layered-necklace"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Layered Necklace
           </Link>
           <Link
-            to="/shopbystyle/contemporary-jewellery"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Contemporary Jewellery
           </Link>
           <Link
-            to="/shopbystyle/daily-wear-everyday-jewellery"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Daily Wear Everyday Jewellery
           </Link>
           <Link
-            to="/shopbystyle/celestial-jewellery"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "
           >
             Celestial Jewellery
           </Link>
           <Link
-            to="/shopbystyle/modern-indian-jewelery"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Modern Indian Jewelery
           </Link>
           <Link
-            to="/shopbystyle/traditional-earrings-for-women-girls"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Traditional Earrings For Women & Girls
           </Link>
           <Link
-            to="/shopbystyle/polki-jewellery"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Polki Jewellery
           </Link>
            <Link
-            to="/shopbystyle/collections"
+            to="/collection/Jewellery"
             className="block text-sm hover:underline "  onClick={() => setIsOpen(false)}
           >
             Collections
