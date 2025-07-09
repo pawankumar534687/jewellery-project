@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,6 +19,8 @@ const ForgotPassword = () => {
         "http://localhost:8000/api/forgot-password",
         data
       );
+      window.location.reload();
+      navigate("/");
       toast.success(response.data.message);
       reset();
     } catch (error) {

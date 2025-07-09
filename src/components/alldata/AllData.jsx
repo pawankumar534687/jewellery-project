@@ -92,11 +92,11 @@ const AllData = () => {
       >
         <div className="flex gap-4">
           {alldata.map((item) => {
-            const discountedPrice = item.price - item.price / 10;
+           
 
             return (
               <Link key={item._id} to={`/product/detaildProduct/${item._id}`}>
-                <div className="relative w-60 shrink-0 border bg-white p-3 flex flex-col rounded-xl justify-center items-center border-gray-200">
+                <div className="relative transition-transform duration-300 hover:scale-105 hover:shadow-xl  w-60 shrink-0 border bg-white p-3 flex flex-col rounded-xl justify-center items-center border-gray-200">
                   <button
                     onClick={(e) => {
                       e.preventDefault();
@@ -113,7 +113,7 @@ const AllData = () => {
                   <div className="w-full h-48 overflow-hidden flex justify-center items-center bg-gray-100 rounded-xl">
                     <img
                       className="object-cover w-full h-full"
-                      src={item.images[0]}
+                      src={item.images[0].url}
                       alt=""
                     />
                   </div>
@@ -128,12 +128,12 @@ const AllData = () => {
                         ₹{item.price}
                       </span>
                       <span className="text-md font-bold text-green-600 uppercase tracking-wide">
-                        10% OFF
+                        {item.discount}% OFF
                       </span>
                     </p>
 
-                    <p className="text-md font-semibold mt-1">
-                      ₹{discountedPrice.toFixed(0)}
+                    <p className="text-md font-semibold mt-1 ">
+                      ₹{item.finalprice}
                     </p>
                   </div>
 

@@ -22,51 +22,57 @@ const Profile = () => {
   const id = localStorage.getItem("id");
 
   useEffect(() => {
-  fetchUser();
-}, []);
+    fetchUser();
+  }, []);
 
-const fetchUser = async () => {
-  const token = localStorage.getItem("token")
-  try {
-    const response = await axios.get(`http://localhost:8000/api/editprofile/${id}`, {
-      headers:{
-        Authorization: `Bearer ${token}`
-      }
-    });
-    const result = response.data;
+  const fetchUser = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/api/editprofile/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const result = response.data;
 
-    reset({
-      firstname: result.firstname,
-      lastname: result.lastname,
-      email: result.email,
-      phone: result.phone,
-      address: result.address
-    });
+      localStorage.setItem("names", `${result.firstname} ${result.lastname}`);
+      localStorage.setItem("email", result.email);
 
-    setProfileData({
-      firstname: result.firstname,
-      lastname: result.lastname,
-      email: result.email,
-      phone: result.phone,
-      address: result.address
-    });
+      reset({
+        firstname: result.firstname,
+        lastname: result.lastname,
+        email: result.email,
+        phone: result.phone,
+        address: result.address,
+      });
 
-    settextData(true);
-  } catch (error) {
-    console.log(error);
-  }
-};
+      setProfileData({
+        firstname: result.firstname,
+        lastname: result.lastname,
+        email: result.email,
+        phone: result.phone,
+        address: result.address,
+      });
 
+      settextData(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onSubmit = async (data) => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
         `http://localhost:8000/api/saveprofile/${id}`,
-        data, {
-          headers:{
-            Authorization: `Bearer ${token}`
-          }
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       const resulte = response.data;
@@ -90,8 +96,11 @@ const fetchUser = async () => {
     <>
       {textData ? (
         <div>
-          <div className="w-full px-6">
-            <h1 className="text-4xl font-bold text-left">My Profile</h1>
+          <div className="w-full p-2  border-b border-gray-300">
+            <h1 className="text-3xl font-bold text-left">My Profile</h1>
+            <p className="text-sm text-gray-500">
+              Manage your personal information
+            </p>
           </div>
 
           <div className="md:grid pt-16 grid-cols-2">
@@ -131,83 +140,104 @@ const fetchUser = async () => {
           </div>
         </div>
       ) : (
-        <div className="pt-16 flex justify-between px-20">
+        <div className="pt-6 px-4 lg:px-20">
+          <h1 className="text-3xl font-bold mb-6">Edit Your Profile</h1>
+
           <form
-            className=" mt-6 flex-col lg:grid lg:grid-cols-2   gap-6 items-center justify-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <label className="text-sm">
-              First Name
+            <div className="flex flex-col">
+              <label className="text-sm mb-1">First Name</label>
               <input
-                className="border-gray-400 p-3 border w-full max-w-md rounded-lg"
+                className="border-gray-400 p-3 border rounded-lg"
                 type="text"
                 placeholder="First name"
                 {...register("firstname", {
                   required: "First name is required",
                 })}
               />
-            </label>
-            {errors.firstname && (
-              <p className="text-red-500 text-sm">First name is required</p>
-            )}
-            <label className="text-sm">
-              Last Name
+              {errors.firstname && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.firstname.message}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-sm mb-1">Last Name</label>
               <input
-                className="border-gray-400 p-3 border w-full max-w-md rounded-lg"
+                className="border-gray-400 p-3 border rounded-lg"
                 type="text"
                 placeholder="Last name"
-                {...register("lastname", { required: "Last name is required" })}
+                {...register("lastname", {
+                  required: "Last name is required",
+                })}
               />
-            </label>
-            {errors.lastname && (
-              <p className="text-red-500 text-sm">Last name is required</p>
-            )}
-            <label className="text-sm">
-              Email
+              {errors.lastname && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.lastname.message}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-sm mb-1">Email</label>
               <input
-                className="border-gray-400 p-3 border w-full max-w-md rounded-lg"
+                className="border-gray-400 p-3 border rounded-lg"
                 type="text"
                 placeholder="Email"
                 {...register("email", { required: "Email is required" })}
               />
-            </label>
-            {errors.email && (
-              <p className="text-red-500 text-sm">Email is required</p>
-            )}
-            <label className="text-sm">
-              Phone
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-sm mb-1">Phone</label>
               <input
-                className="border-gray-400 p-3 border w-full max-w-md rounded-lg"
+                className="border-gray-400 p-3 border rounded-lg"
                 type="text"
                 placeholder="Phone"
+                maxLength={10}
                 {...register("phone", {
                   required: "Phone Number is required",
-                  minLength: {
-                    value: 10,
-                    message: "Phone Number must be at least 10 characters",
+                  pattern: {
+                    value: /^[0-9]{10}$/,
+                    message: "Phone number must be exactly 10 digits",
                   },
                 })}
               />
-            </label>
-            {errors.phone && (
-              <p className="text-red-500 text-sm">{errors.phone.message}</p>
-            )}
-            <label className="text-sm col-span-2">Address</label>
-            <textarea
-              className="border-gray-400 col-span-2 p-3 border w-full rounded-lg"
-              placeholder="Address"
-              {...register("address", {
-                required: "Address is required",
-              })}
-            />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
 
-            {errors.address && (
-              <p className="text-red-500 text-sm">{errors.address.message}</p>
-            )}
-            <div>
+            <div className="flex flex-col lg:col-span-2">
+              <label className="text-sm mb-1">Address</label>
+              <textarea
+                className="border-gray-400 p-3 border rounded-lg"
+                placeholder="Address"
+                {...register("address", {
+                  required: "Address is required",
+                })}
+              />
+              {errors.address && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.address.message}
+                </p>
+              )}
+            </div>
+
+            <div className="lg:col-span-2">
               <button
                 type="submit"
-                className="bg-black text-white text-md p-2  rounded-lg"
+                className="bg-black text-white text-md p-3 rounded-lg w-full lg:w-auto"
               >
                 Save Changes
               </button>

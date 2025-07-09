@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-const Quantity = ({ id }) => {
+const Quantity = ({ id, onQuantityChange }) => {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -18,16 +17,12 @@ const Quantity = ({ id }) => {
     );
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     setQuantity(newQuantity);
+    onQuantityChange(); 
   };
 
-  const handleIncrease = () => {
-    updateCart(quantity + 1);
-  };
-
+  const handleIncrease = () => updateCart(quantity + 1);
   const handleDecrease = () => {
-    if (quantity > 1) {
-      updateCart(quantity - 1);
-    }
+    if (quantity > 1) updateCart(quantity - 1);
   };
 
   return (

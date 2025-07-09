@@ -13,7 +13,7 @@ const Search = () => {
         `http://localhost:8000/api/search?q=${query}`
       );
 
-      // Navigate after data is fetched
+      
       Navigate("/searchs", {
         state: { results: response.data, query: query },
       });
@@ -49,7 +49,7 @@ const Search = () => {
 
             <button onClick={handleSearch}>
               <img
-                className="w-6 h-6 cursor-pointer"
+                className="w-5 h-5 cursor-pointer"
                 src="/search.png"
                 alt=""
               />

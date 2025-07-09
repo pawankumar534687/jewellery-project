@@ -23,10 +23,9 @@ const Signup = () => {
 
       localStorage.setItem("token", result.token);
       localStorage.setItem("id", result.user.id);
-     
 
+      toast.success(response.data.message, { autoClose: 3000 });
       reset();
-      toast.success("Signup successful!");
       navigate("/");
       window.location.reload();
     } catch (error) {

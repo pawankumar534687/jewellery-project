@@ -8,7 +8,7 @@ const ShopByCategory = () => {
         Shop By Categories
       </h1>
       <div className="grid max-sm:grid-cols-2 max-md:grid-cols-3 max-lg:grid-cols-6 lg:grid-cols-6 items-center my-4  mx-auto w-fit gap-6">
-        <Link to="/collection/Jewellery" >
+        <Link to="/jewellery/Earrings" >
           <div>
             <motion.img
               initial={{ opacity: 0, y: 50 }}
@@ -25,7 +25,7 @@ const ShopByCategory = () => {
             </div>
           </div>
         </Link>
-        <Link to="/collection/Jewellery" >
+        <Link to="/jewellery/Necklaces" >
           <div>
             <motion.img
               initial={{ opacity: 0, y: 50 }}
@@ -42,7 +42,7 @@ const ShopByCategory = () => {
             </div>
           </div>
         </Link>
-        <Link to="/collection/Jewellery" >
+        <Link to="/jewellery/Bracelets" >
           <div>
             <motion.img
               initial={{ opacity: 0, y: 50 }}
@@ -59,7 +59,7 @@ const ShopByCategory = () => {
             </div>
           </div>
         </Link>
-        <Link to="/collection/Jewellery" >
+        <Link to="/jewellery/Rings" >
           <div>
             <motion.img
               initial={{ opacity: 0, y: 50 }}
@@ -76,7 +76,7 @@ const ShopByCategory = () => {
             </div>
           </div>
         </Link>
-        <Link to="/collection/Jewellery" >
+        <Link to="/jewellery/Bridal Jewelery" >
           <div>
             <motion.img
               initial={{ opacity: 0, y: 50 }}
@@ -93,7 +93,7 @@ const ShopByCategory = () => {
             </div>
           </div>
         </Link>
-        <Link to="/collection/Jewellery" >
+        <Link to="/jewellery/Healing" >
           <div>
             <motion.img
               initial={{ opacity: 0, y: 50 }}

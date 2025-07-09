@@ -28,7 +28,7 @@ const Login = () => {
       reset();
 
       navigate("/");
-
+ window.location.reload()
       toast.success("Login successful!");
     } catch (error) {
       const msg = error.response?.data?.message || "Login failed!";

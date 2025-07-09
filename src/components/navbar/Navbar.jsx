@@ -7,10 +7,11 @@ import Gifting from "./gifting/Gifting";
 import Zodiac from "./zodiac/Zodiac";
 import Wedding from "./wedding/Wedding";
 import Search from "../Search";
+import { RiAccountCircleLine } from "react-icons/ri";
+import { VscAccount } from "react-icons/vsc";
 
 const Navbar = ({ show }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const token = localStorage.getItem("token");
 
   return (
@@ -27,7 +28,10 @@ const Navbar = ({ show }) => {
           <Logo />
 
           <div className="flex max-lg:hidden items-center">
-            <Link className="hover:underline text-sm" to="/collection/Jewellery">
+            <Link
+              className="hover:underline text-sm"
+              to="/jewellery/New Arrival"
+            >
               New Arrival
             </Link>
             <AllJewellery />
@@ -35,63 +39,35 @@ const Navbar = ({ show }) => {
             <Gifting />
             <Zodiac />
             <Wedding />
-            <Link className="hover:underline text-sm" to="/collection/Jewellery">
-              Urja
-            </Link>
           </div>
         </div>
 
-        <div className="flex gap-8 mr-12">
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-8 mr-4 sm:mr-6 md:mr-12">
           <Search />
+
           {token ? (
-            <Link to="/userprofile">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-user-round-icon lucide-user-round"
-              >
-                <circle cx="12" cy="8" r="5" />
-                <path d="M20 21a8 8 0 0 0-16 0" />
-              </svg>
+            <Link to="/userprofile" className="flex items-center">
+              <img
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
+                src="/boy.png"
+                alt="Profile"
+              />
             </Link>
           ) : (
-            <Link to="/login">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-user-round-icon lucide-user-round"
-              >
-                <circle cx="12" cy="8" r="5" />
-                <path d="M20 21a8 8 0 0 0-16 0" />
-              </svg>
+            <Link to="/login" className="flex items-center">
+              <VscAccount  className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5" />
             </Link>
           )}
 
-          <button onClick={show}>
-            <Link>
-              <img className="w-auto h-6" src="/bag.png" alt="" />
-            </Link>
+          <button onClick={show} className="flex items-center">
+            <img className="w-5 h-5 sm:w-6 sm:h-6" src="/bag.png" alt="Cart" />
           </button>
         </div>
       </div>
 
       <div className="relative">
         {isOpen && (
-          <div className="absolute   overflow-y-scroll top-full left-0 w-[70%] z-50 flex flex-col lg:hidden items-start bg-white shadow-md ">
+          <div className="fixed top-[56px] left-0 w-[60%] z-[999] flex flex-col lg:hidden items-start bg-white shadow-md rounded-b-2xl h-[calc(100vh-240px)] overflow-y-auto">
             <Link
               onClick={() => setIsOpen(false)}
               className="hover:underline text-sm ml-4 py-2"
@@ -104,13 +80,6 @@ const Navbar = ({ show }) => {
             <Gifting setIsOpen={setIsOpen} isOpen={isOpen} />
             <Zodiac setIsOpen={setIsOpen} isOpen={isOpen} />
             <Wedding setIsOpen={setIsOpen} isOpen={isOpen} />
-            <Link
-              onClick={() => setIsOpen(false)}
-              className="hover:underline text-sm ml-4 py-2"
-              to="/collection/Jewellery"
-            >
-              Urja
-            </Link>
           </div>
         )}
       </div>

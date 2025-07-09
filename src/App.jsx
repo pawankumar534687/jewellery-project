@@ -17,10 +17,14 @@ import Terms_and_Conditions from "./components/terms_and_conditions/Terms_and_Co
 import PrivacyPolicy from "./components/privacypolicy/PrivacyPolicy";
 import WishList from "./components/wishlist/WishList";
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
-import JewelleryCategoryPage from "./components/jewellerycategory/JewelleryCategoryPage";
+import JewellerySubCategory from "./components/jewellerycategory/JewellerysubCategory";
 import ForgotPassword from "./components/login-signup/ForgotPassword";
 import ResetPassword from "./components/login-signup/ResetPassword";
 import Searchs from "./components/Searchs";
+import MyCart2 from "./components/mycart/MyCart2";
+import CheckOut from "./components/checkout/CheckOut";
+import OrderDeatails from "./components/myorders/OrderDeatails";
+
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -40,8 +44,8 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route
-            path="/collection/:category"
-            element={<JewelleryCategoryPage />}
+            path="/jewellery/:subcategory"
+            element={<JewellerySubCategory />}
           />
 
           <Route path="/login" element={<Login />} />
@@ -79,6 +83,9 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/searchs" element={<Searchs />} />
+          <Route path="/detailedmycart" element={<MyCart2 />} />
+          <Route path="/checkout" element={<CheckOut />} />
+         
         </Routes>
         <Footer />
       </div>

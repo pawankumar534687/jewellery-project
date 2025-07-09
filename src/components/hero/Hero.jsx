@@ -1,13 +1,33 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-const Hero = () => {
+import React from "react";
+import { Link } from "react-router-dom";
+const Hero = ({ banners }) => {
+  const homepage1small = banners.filter(
+    (b) => b.position === "Homepage 1 small"
+  );
+  const homepage1big = banners.filter((b) => b.position === "Homepage 1 big");
+
   return (
-    <div  className='mt-14'>
-    <Link to="/collection/Jewellery"><img className="w-full h-auto  max-md:hidden" src="Banner.webp" alt="" /></Link>
-    <Link to="/collection/Jewellery"><img className="w-full h-auto  md:hidden" src="traval_banner.webp" alt="" /></Link>
-
+    <div className="mt-14">
+      {homepage1big.map((item) => (
+        <Link key={item._id} to={item.link}>
+          <img
+            className="w-full h-auto  max-md:hidden"
+            src={item.image.url}
+            alt={item.title}
+          />
+        </Link>
+      ))}
+      {homepage1small.map((item) => (
+        <Link key={item._id} to={item.link}>
+          <img
+            className="w-full h-auto  md:hidden"
+            src={item.image.url}
+            alt={item.title}
+          />
+        </Link>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

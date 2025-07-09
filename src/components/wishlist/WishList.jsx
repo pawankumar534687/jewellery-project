@@ -26,18 +26,29 @@ const WishList = () => {
     const currentwishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const updatedwishlist = currentwishlist.filter((item) => item._id !== id);
 
-    localStorage.setItem("wishlist", JSON.stringify(updatedwishlist)); // 👈 fix here
+    localStorage.setItem("wishlist", JSON.stringify(updatedwishlist)); 
     setWishListProducts(updatedwishlist);
   };
 
+  
+
   return (
-    <div className="w-full pt-13 bg-gray-100 min-h-screen px-6">
-      <h1 className="text-4xl font-bold mb-8 text-center">WishList Products</h1>
+    <div className="w-full pt- min-h-screen px-6">
+      <div className="w-full p-2 mb-12  border-b border-gray-300">
+        <h1 className="text-3xl font-bold text-left">WishList Products</h1>
+       
+      </div>
 
       {wishListProducts.length === 0 ? (
-        <p className="text-lg text-gray-500 text-center">
+        <>
+        <div className="flex justify-center items-center">
+
+        <img className="w-52 " src="favorite.png" alt="favorite.png" />
+        </div>
+        <p className="text-2xl font-semibold mt-6 text-gray-500 text-center">
           Your wishlist is empty.
         </p>
+        </>
       ) : (
         <div className="space-y-4 ">
           {wishListProducts.map((item) => (
