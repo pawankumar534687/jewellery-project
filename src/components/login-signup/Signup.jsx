@@ -16,7 +16,7 @@ const Signup = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/signup",
+        "https://jewellery-backend-km3b.onrender.com/api/signup",
         data
       );
       const result = response.data;

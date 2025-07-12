@@ -35,7 +35,7 @@ const Deatailed = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/detaildProduct/${id}`,
+        `https://jewellery-backend-km3b.onrender.com/api/detaildProduct/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

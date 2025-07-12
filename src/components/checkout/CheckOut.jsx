@@ -36,7 +36,7 @@ const CheckOut = () => {
     setCouponLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/apply-coupon",
+        "https://jewellery-backend-km3b.onrender.com/api/apply-coupon",
         {
           couponCode: couponCode,
           totalprice: grandtotal,
@@ -126,7 +126,7 @@ const CheckOut = () => {
       if (formData.paymentMethod === "online") {
         const token = localStorage.getItem("token");
         const { data } = await axios.post(
-          "http://localhost:8000/api/create-razorpay-order",
+          "https://jewellery-backend-km3b.onrender.com/api/create-razorpay-order",
           { amount: finalAmount },
           {
             headers: {
@@ -143,7 +143,7 @@ const CheckOut = () => {
           order_id: data.order.id,
           handler: async function (response) {
             const res = await axios.post(
-              "http://localhost:8000/api/verify-payment",
+              "https://jewellery-backend-km3b.onrender.com/api/verify-payment",
               { ...response, orderData },
               {
                 headers: {
@@ -167,7 +167,7 @@ const CheckOut = () => {
         const token = localStorage.getItem("token");
 
         const response = await axios.post(
-          "http://localhost:8000/api/new-order",
+          "https://jewellery-backend-km3b.onrender.com/api/new-order",
           orderData,
           {
             headers: {

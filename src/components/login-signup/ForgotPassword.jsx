@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/forgot-password",
+        "https://jewellery-backend-km3b.onrender.com/api/forgot-password",
         data
       );
       window.location.reload();

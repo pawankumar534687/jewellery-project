@@ -13,7 +13,7 @@ const JewellerySubCategory = () => {
   const getData = async (subcategory) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/jewellery/${subcategory}`
+        `https://jewellery-backend-km3b.onrender.com/api/jewellery/${subcategory}`
       );
       console.log(response.data);
       setcategoryData(response.data);

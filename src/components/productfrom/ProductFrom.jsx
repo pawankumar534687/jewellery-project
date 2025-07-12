@@ -20,7 +20,7 @@ const ProductFrom = () => {
       formData.append("image", data.images[i]);
     }
     try {
-      await axios.post("http://localhost:8000/api/createproduct", formData, {
+      await axios.post("https://jewellery-backend-km3b.onrender.com/api/createproduct", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -17,7 +17,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/login",
+        "https://jewellery-backend-km3b.onrender.com/api/login",
         data
       );
       const result = response.data;

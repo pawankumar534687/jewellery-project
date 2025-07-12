@@ -19,7 +19,7 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/reset-password/${token}`,
+        `https://jewellery-backend-km3b.onrender.com/api/reset-password/${token}`,
         { password: data.password }
       );
       toast.success(response.data.message);

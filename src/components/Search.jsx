@@ -10,7 +10,7 @@ const Search = () => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/search?q=${query}`
+        `https://jewellery-backend-km3b.onrender.com/api/search?q=${query}`
       );
 
       

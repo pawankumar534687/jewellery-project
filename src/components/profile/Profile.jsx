@@ -29,7 +29,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/editprofile/${id}`,
+        `https://jewellery-backend-km3b.onrender.com/api/editprofile/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/saveprofile/${id}`,
+        `https://jewellery-backend-km3b.onrender.com/api/saveprofile/${id}`,
         data,
         {
           headers: {

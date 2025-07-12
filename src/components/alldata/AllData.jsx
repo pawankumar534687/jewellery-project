@@ -10,7 +10,7 @@ const AllData = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("http://localhost:8000/api/alldata");
+      const response = await axios.get("https://jewellery-backend-km3b.onrender.com/api/alldata");
       setalldata(response.data);
     };
     getData();

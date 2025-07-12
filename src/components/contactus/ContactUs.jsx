@@ -13,7 +13,7 @@ const ContactUs = () => {
   const onSubmit = async (data) => {
     const token = localStorage.getItem("token")
     try {
-       await axios.post("http://localhost:8000/api/message", data, {
+       await axios.post("https://jewellery-backend-km3b.onrender.com/api/message", data, {
         headers: {
           Authorization: `Bearer ${token}`
         }

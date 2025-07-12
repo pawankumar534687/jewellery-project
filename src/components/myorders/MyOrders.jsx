@@ -13,7 +13,7 @@ const MyOrders = ({ onViewOrder }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/getorderbyId/${id}`,
+          `https://jewellery-backend-km3b.onrender.com/api/getorderbyId/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

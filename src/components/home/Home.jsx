@@ -12,7 +12,7 @@ const Home = () => {
 
   const getallbanner = async () => {
     const token = localStorage.getItem("token");
-    const response = await axios.get("http://localhost:8000/api/getallbanner",
+    const response = await axios.get("https://jewellery-backend-km3b.onrender.com/api/getallbanner",
      
     );
     setBanners(response.data.filter(b => b.isActive));
