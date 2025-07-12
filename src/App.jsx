@@ -17,7 +17,7 @@ import Terms_and_Conditions from "./components/terms_and_conditions/Terms_and_Co
 import PrivacyPolicy from "./components/privacypolicy/PrivacyPolicy";
 import WishList from "./components/wishlist/WishList";
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute";
-import JewellerySubCategory from "./components/jewellerycategory/JewellerysubCategory";
+import JewellerySubCategory from "./components/jewellerycategory/JewellerySubCategory"
 import ForgotPassword from "./components/login-signup/ForgotPassword";
 import ResetPassword from "./components/login-signup/ResetPassword";
 import Searchs from "./components/Searchs";
