@@ -10,8 +10,14 @@ const AllData = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://jewellery-backend-km3b.onrender.com/api/alldata");
-      setalldata(response.data);
+      try {
+        const response = await axios.get(
+          "https://jewellery-backend-km3b.onrender.com/api/alldata"
+        );
+        setalldata(response.data);
+      } catch (error) {
+        console.log(error)
+      }
     };
     getData();
   }, []);
@@ -92,8 +98,6 @@ const AllData = () => {
       >
         <div className="flex gap-4">
           {alldata.map((item) => {
-           
-
             return (
               <Link key={item._id} to={`/product/detaildProduct/${item._id}`}>
                 <div className="relative transition-transform duration-300 hover:scale-105 hover:shadow-xl  w-60 shrink-0 border bg-white p-3 flex flex-col rounded-xl justify-center items-center border-gray-200">
