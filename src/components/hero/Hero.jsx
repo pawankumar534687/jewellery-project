@@ -6,6 +6,10 @@ const Hero = ({ banners }) => {
   );
   const homepage1big = banners.filter((b) => b.position === "Homepage 1 big");
 
+  
+
+
+
   return (
     <div className="mt-14">
       {homepage1big.map((item) => (
